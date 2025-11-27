@@ -1,0 +1,15 @@
+# Serverless directories
+**/serverless/
+
+# Node modules
+**/node_modules/
+
+# Logs
+**/logs/
+**/npm-debug.log*
+
+# Environment variables
+**/.env # Ignore all environment variables
+**/.env.*
+backend/.env
+

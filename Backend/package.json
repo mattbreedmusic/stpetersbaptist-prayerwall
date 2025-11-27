@@ -1,0 +1,27 @@
+{
+  "name": "prayer-wall-backend",
+  "version": "1.0.0",
+  "description": "Backend for Prayer Wall application",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "logs-upload": "serverless logs -f getUploadMediaUrl -t",
+    "logs-get": "serverless logs -f getMedia -t"
+  },
+  "keywords": [
+    "serverless",
+    "lambda",
+    "s3"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.450.0",
+    "@aws-sdk/s3-request-presigner": "^3.450.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "osls": "^3.59.2"
+  }
+}

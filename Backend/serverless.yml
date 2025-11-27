@@ -1,0 +1,44 @@
+service: prayer-wall-backend
+
+frameworkVersion: '3'
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs24.x
+  region: eu-west-2
+  stage: ${opt:stage, 'dev'}
+  environment:
+    BUCKET_NAME: ${self:custom.bucketName}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+        - s3:ListBucket
+      Resource:
+        - arn:aws:s3:::${self:custom.bucketName}
+        - arn:aws:s3:::${self:custom.bucketName}/*
+
+custom:
+  bucketName: stpetersbaptist-prayerwall
+
+functions:
+  uploadPrayerRequest:
+    handler: handlers.uploadPrayerRequest.handler
+    events:
+      - httpApi:
+          path: /prayers
+          method: POST
+    url:
+      cors: true
+
+  getPrayerRequests:
+    handler: handlers.getPrayerRequests.handler
+    events:
+      - httpApi:
+          path: /prayers
+          method: GET
+    url:
+      cors: true
