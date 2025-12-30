@@ -1,5 +1,5 @@
 # Serverless directories
-**/serverless/
+**/.serverless/
 
 # Node modules
 **/node_modules/

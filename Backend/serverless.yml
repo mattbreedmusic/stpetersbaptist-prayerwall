@@ -6,7 +6,7 @@ useDotenv: true
 
 provider:
   name: aws
-  runtime: nodejs24.x
+  runtime: nodejs22.x
   region: eu-west-2
   stage: ${opt:stage, 'dev'}
   environment:
@@ -20,13 +20,29 @@ provider:
       Resource:
         - arn:aws:s3:::${self:custom.bucketName}
         - arn:aws:s3:::${self:custom.bucketName}/*
+package:
+  individually: true
+  patterns:
+    # Exclude frontend and non-backend assets from Lambda bundles
+    - '!../Frontend/**'
+    - '!../prayerbackground.jpg'
+    - '!../PrayerWall.png'
+    - '!../webbackground.png'
+    # Exclude various development / meta files
+    - '!.git/**'
+    - '!**/*.md'
+    - '!**/*.log'
+    - '!**/.DS_Store'
+    - '!node_modules/.cache/**'
+plugins:
+  - serverless-offline
 
 custom:
   bucketName: stpetersbaptist-prayerwall
 
 functions:
   uploadPrayerRequest:
-    handler: handlers.uploadPrayerRequest.handler
+    handler: handlers/uploadPrayerRequest.handler
     events:
       - httpApi:
           path: /prayers
@@ -35,7 +51,7 @@ functions:
       cors: true
 
   getPrayerRequests:
-    handler: handlers.getPrayerRequests.handler
+    handler: handlers/getPrayerRequests.handler
     events:
       - httpApi:
           path: /prayers

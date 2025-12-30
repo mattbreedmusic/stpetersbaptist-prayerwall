@@ -6,7 +6,7 @@
     },
     "provider": {
       "name": "aws",
-      "runtime": "nodejs24.x",
+      "runtime": "nodejs22.x",
       "region": "eu-west-2",
       "stage": "dev",
       "environment": {
@@ -200,10 +200,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/prayer-wall-backend/dev/1764246800560-2025-11-27T12:33:20.560Z/prayer-wall-backend.zip"
+                "S3Key": "serverless/prayer-wall-backend/dev/1766483968821-2025-12-23T09:59:28.821Z/prayer-wall-backend.zip"
               },
-              "Handler": "handlers.uploadPrayerRequest.handler",
-              "Runtime": "nodejs24.x",
+              "Handler": "handlers/uploadPrayerRequest.handler",
+              "Runtime": "nodejs22.x",
               "FunctionName": "prayer-wall-backend-dev-uploadPrayerRequest",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -230,10 +230,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/prayer-wall-backend/dev/1764246800560-2025-11-27T12:33:20.560Z/prayer-wall-backend.zip"
+                "S3Key": "serverless/prayer-wall-backend/dev/1766483968821-2025-12-23T09:59:28.821Z/prayer-wall-backend.zip"
               },
-              "Handler": "handlers.getPrayerRequests.handler",
-              "Runtime": "nodejs24.x",
+              "Handler": "handlers/getPrayerRequests.handler",
+              "Runtime": "nodejs22.x",
               "FunctionName": "prayer-wall-backend-dev-getPrayerRequests",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -253,14 +253,14 @@
               "GetPrayerRequestsLogGroup"
             ]
           },
-          "UploadPrayerRequestLambdaVersion0RYPg1cJsiXIgV2YOpyrupTBJmbYx7IYsBFjmelps": {
+          "UploadPrayerRequestLambdaVersionfr3B4m00W3t6W3SGFZuGvFIRNfACKeMf4jgICCQr0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UploadPrayerRequestLambdaFunction"
               },
-              "CodeSha256": "lmhWdnPXXGqS3djQ1VaZlXIy9iNZFROffZziA+iuQyk="
+              "CodeSha256": "ENwfmAUTJwI4pm7ry1dR3/WrUYTTpI8/WiE3zYTSt6U="
             }
           },
           "UploadPrayerRequestLambdaFunctionUrl": {
@@ -313,14 +313,14 @@
               "InvokedViaFunctionUrl": true
             }
           },
-          "GetPrayerRequestsLambdaVersion1HoBHhVmdcfQGqP2PGARDpewmN1XtsR7iXs2f5SjRpk": {
+          "GetPrayerRequestsLambdaVersionllkq4ppbCsilW4pSP6cthttD8XYh3YhQvwmhBg31kN8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetPrayerRequestsLambdaFunction"
               },
-              "CodeSha256": "lmhWdnPXXGqS3djQ1VaZlXIy9iNZFROffZziA+iuQyk="
+              "CodeSha256": "ENwfmAUTJwI4pm7ry1dR3/WrUYTTpI8/WiE3zYTSt6U="
             }
           },
           "GetPrayerRequestsLambdaFunctionUrl": {
@@ -550,7 +550,7 @@
           "UploadPrayerRequestLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UploadPrayerRequestLambdaVersion0RYPg1cJsiXIgV2YOpyrupTBJmbYx7IYsBFjmelps"
+              "Ref": "UploadPrayerRequestLambdaVersionfr3B4m00W3t6W3SGFZuGvFIRNfACKeMf4jgICCQr0"
             },
             "Export": {
               "Name": "sls-prayer-wall-backend-dev-UploadPrayerRequestLambdaFunctionQualifiedArn"
@@ -571,7 +571,7 @@
           "GetPrayerRequestsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetPrayerRequestsLambdaVersion1HoBHhVmdcfQGqP2PGARDpewmN1XtsR7iXs2f5SjRpk"
+              "Ref": "GetPrayerRequestsLambdaVersionllkq4ppbCsilW4pSP6cthttD8XYh3YhQvwmhBg31kN8"
             },
             "Export": {
               "Name": "sls-prayer-wall-backend-dev-GetPrayerRequestsLambdaFunctionQualifiedArn"
@@ -712,10 +712,13 @@
     "custom": {
       "bucketName": "stpetersbaptist-prayerwall"
     },
+    "plugins": [
+      "serverless-offline"
+    ],
     "pluginsData": {},
     "functions": {
       "uploadPrayerRequest": {
-        "handler": "handlers.uploadPrayerRequest.handler",
+        "handler": "handlers/uploadPrayerRequest.handler",
         "events": [
           {
             "httpApi": {
@@ -733,12 +736,12 @@
         "package": {},
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs24.x",
+        "runtime": "nodejs22.x",
         "vpc": {},
-        "versionLogicalId": "UploadPrayerRequestLambdaVersion0RYPg1cJsiXIgV2YOpyrupTBJmbYx7IYsBFjmelps"
+        "versionLogicalId": "UploadPrayerRequestLambdaVersionfr3B4m00W3t6W3SGFZuGvFIRNfACKeMf4jgICCQr0"
       },
       "getPrayerRequests": {
-        "handler": "handlers.getPrayerRequests.handler",
+        "handler": "handlers/getPrayerRequests.handler",
         "events": [
           {
             "httpApi": {
@@ -756,9 +759,9 @@
         "package": {},
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs24.x",
+        "runtime": "nodejs22.x",
         "vpc": {},
-        "versionLogicalId": "GetPrayerRequestsLambdaVersion1HoBHhVmdcfQGqP2PGARDpewmN1XtsR7iXs2f5SjRpk"
+        "versionLogicalId": "GetPrayerRequestsLambdaVersionllkq4ppbCsilW4pSP6cthttD8XYh3YhQvwmhBg31kN8"
       }
     },
     "configValidationMode": "warn",
@@ -769,6 +772,9 @@
       "useDotenv": true,
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "plugins": {
+        "$ref": "$[\"service\"][\"plugins\"]"
       },
       "custom": {
         "$ref": "$[\"service\"][\"custom\"]"
@@ -781,7 +787,7 @@
     "artifact": "/Users/mattjbreed/Desktop/Prayer Wall/Backend/.serverless/prayer-wall-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/prayer-wall-backend/dev/1764246800560-2025-11-27T12:33:20.560Z",
+    "artifactDirectoryName": "serverless/prayer-wall-backend/dev/1766483968821-2025-12-23T09:59:28.821Z",
     "artifact": "prayer-wall-backend.zip"
   }
 }
