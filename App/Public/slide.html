@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Column Flex Layout</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("./webbackground.png");
+      background-size: cover;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+      box-sizing: border-box;
+      padding: 40px;
+      gap: 20px;
+    }
+
+    .column {
+      flex: 1;
+      padding: 20px;
+      border-radius: 30px;
+    
+    }
+
+    .left {
+      background: rgba(99, 132, 181, 0.7);
+    }
+
+    .right {
+      background: rgba(99, 132, 181, 0.7);
+    }
+    .column-title {
+        text-align: center;
+        font-size: 58px;
+        font-weight: bold;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="column left">
+        <div class="column-title">Praise</div>
+        <div class="column-content" id="praiseColumn"></div>
+         
+      <!-- Left column content -->
+    </div>
+    <div class="column right">
+        <div class="column-title">Prayer</div>
+        <div class="column-content" id="prayerColumn"></div>
+      <!-- Right column content -->
+    </div>
+  </div>
+<script>
+  async function buildSlide() {
+    const { praiseMessages, prayerMessages } = await getMessages();
+    fillColumn("praiseColumn", praiseMessages);
+    fillColumn("prayerColumn", prayerMessages);
+  }
+  buildSlide();
+  async function getMessages (){
+    // get request to api to get list of requests
+    const response = await fetch("https://b5gzzagrol.execute-api.eu-west-2.amazonaws.com/prayers", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+    console.log(data);
+    // separate praise from prayer requests, return 2 lists
+    const praiseMessages = data.filter(message => message.type === "praise");
+    const prayerMessages = data.filter(message => message.type === "prayer");
+    return { praiseMessages, prayerMessages };
+  }
+  function fillColumn (id, messages) {
+      const column = document.getElementById(id);
+      column.innerHTML = /*html*/`
+        <ul>
+          ${messages.map(message => getMessageHtml(message.name, message.message)).join('')}
+        </ul>
+      `
+      //fillColumn should get column ellement by id and fill it with messages//
+      //get messages by using getMessageHtml//
+  }
+  
+  function getMessageHtml (name, message){
+      return /*html*/`
+      <li style="font-size: 32px; color: white;">
+        <span contenteditable="true" class="message-text">${message}</span>
+      </li>
+      `
+  }
+</script>
+</body>
+</html>

@@ -12,4 +12,5 @@
 **/.env # Ignore all environment variables
 **/.env.*
 backend/.env
+Backend/.env
 

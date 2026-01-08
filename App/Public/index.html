@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +11,7 @@
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <h1>Praise & Prayer</h1>
 
@@ -21,12 +23,18 @@
   <form id="entryForm" style="display:none" onsubmit="submitForm(event)">
     <textarea id="message" placeholder="Write your message..." required></textarea>
     <input type="text" id="name" placeholder="Name (Optional)">
+    <div style="text-align: left;">
+      <div
+        style="box-sizing: border-box; background-color: rgba(0, 0, 0, 0.3); font-size: 1.5em; color: white; width: 80%; margin-left: 10%; margin-top: 10px; margin-bottom: 10px; padding: 10px;">
+        Your name will not be displayed, will be used for follow-ups if provided</div>
+    </div>
     <input type="hidden" id="type">
     <button class="submit-btn" type="submit">Submit</button>
   </form>
 
-  
+
 
   <script src="script.js"></script>
 </body>
+
 </html>
