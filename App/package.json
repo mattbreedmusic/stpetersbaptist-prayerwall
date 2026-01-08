@@ -2,6 +2,7 @@
   "name": "praise-prayer-app",
   "version": "1.0.0",
   "scripts": {
-    "upload-app": "aws s3 cp --recursive --profile mattbreed ./Public/ s3://stpetersbaptist-prayerwall/public/"
+    "upload:mbern": "aws s3 cp --recursive --profile mattbreed ./Public/ s3://stpetersbaptist-prayerwall/public/",
+    "upload": "aws s3 cp --recursive --profile default ./Public/ s3://stpetersbaptist-prayerwall/public/"
   }
 }
