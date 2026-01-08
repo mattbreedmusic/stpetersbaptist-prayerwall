@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praise & Prayer</title>
+
+  <!-- Google Font: DM Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Praise & Prayer</h1>
+
+  <div id="buttons">
+    <button class="main-btn" id="praiseBtn" onclick="showForm('praise')">Praise Report</button>
+    <button class="main-btn" id="prayerBtn" onclick="showForm('prayer')">Prayer Request</button>
+  </div>
+
+  <form id="entryForm" style="display:none" onsubmit="submitForm(event)">
+    <textarea id="message" placeholder="Write your message..." required></textarea>
+    <input type="text" id="name" placeholder="Name (Optional)">
+    <input type="hidden" id="type">
+    <button class="submit-btn" type="submit">Submit</button>
+  </form>
+
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
