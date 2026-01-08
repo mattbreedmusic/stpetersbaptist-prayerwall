@@ -180,7 +180,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/prayer-wall-backend/dev/1766483968821-2025-12-23T09:59:28.821Z/prayer-wall-backend.zip"
+          "S3Key": "serverless/prayer-wall-backend/dev/1767100646249-2025-12-30T13:17:26.249Z/uploadPrayerRequest.zip"
         },
         "Handler": "handlers/uploadPrayerRequest.handler",
         "Runtime": "nodejs22.x",
@@ -210,7 +210,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/prayer-wall-backend/dev/1766483968821-2025-12-23T09:59:28.821Z/prayer-wall-backend.zip"
+          "S3Key": "serverless/prayer-wall-backend/dev/1767100646249-2025-12-30T13:17:26.249Z/getPrayerRequests.zip"
         },
         "Handler": "handlers/getPrayerRequests.handler",
         "Runtime": "nodejs22.x",
@@ -233,143 +233,50 @@
         "GetPrayerRequestsLogGroup"
       ]
     },
-    "UploadPrayerRequestLambdaVersionfr3B4m00W3t6W3SGFZuGvFIRNfACKeMf4jgICCQr0": {
-      "Type": "AWS::Lambda::Version",
-      "DeletionPolicy": "Retain",
-      "Properties": {
-        "FunctionName": {
-          "Ref": "UploadPrayerRequestLambdaFunction"
-        },
-        "CodeSha256": "ENwfmAUTJwI4pm7ry1dR3/WrUYTTpI8/WiE3zYTSt6U="
-      }
-    },
-    "UploadPrayerRequestLambdaFunctionUrl": {
-      "Type": "AWS::Lambda::Url",
-      "Properties": {
-        "AuthType": "NONE",
-        "TargetFunctionArn": {
-          "Fn::GetAtt": [
-            "UploadPrayerRequestLambdaFunction",
-            "Arn"
-          ]
-        },
-        "Cors": {
-          "AllowHeaders": [
-            "Content-Type",
-            "X-Amz-Date",
-            "Authorization",
-            "X-Api-Key",
-            "X-Amz-Security-Token",
-            "X-Amzn-Trace-Id"
-          ],
-          "AllowMethods": [
-            "*"
-          ],
-          "AllowOrigins": [
-            "*"
-          ]
-        }
-      }
-    },
-    "UploadPrayerRequestLambdaPermissionFnUrl": {
-      "Type": "AWS::Lambda::Permission",
-      "Properties": {
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "UploadPrayerRequestLambdaFunction",
-            "Arn"
-          ]
-        },
-        "Action": "lambda:InvokeFunctionUrl",
-        "Principal": "*",
-        "FunctionUrlAuthType": "NONE"
-      }
-    },
-    "UploadPrayerRequestLambdaPermissionFn": {
-      "Type": "AWS::Lambda::Permission",
-      "Properties": {
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "UploadPrayerRequestLambdaFunction",
-            "Arn"
-          ]
-        },
-        "Action": "lambda:InvokeFunction",
-        "Principal": "*",
-        "InvokedViaFunctionUrl": true
-      }
-    },
-    "GetPrayerRequestsLambdaVersionllkq4ppbCsilW4pSP6cthttD8XYh3YhQvwmhBg31kN8": {
+    "GetPrayerRequestsLambdaVersion7SdFzTiGg2lz1mP0m1nISqi0suP2JBxhrCvT88b1RtM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetPrayerRequestsLambdaFunction"
         },
-        "CodeSha256": "ENwfmAUTJwI4pm7ry1dR3/WrUYTTpI8/WiE3zYTSt6U="
+        "CodeSha256": "JKAKnpQWMISAclvJT6DeqTNdJ+X+uZdAqpblvy5odXM="
       }
     },
-    "GetPrayerRequestsLambdaFunctionUrl": {
-      "Type": "AWS::Lambda::Url",
-      "Properties": {
-        "AuthType": "NONE",
-        "TargetFunctionArn": {
-          "Fn::GetAtt": [
-            "GetPrayerRequestsLambdaFunction",
-            "Arn"
-          ]
-        },
-        "Cors": {
-          "AllowHeaders": [
-            "Content-Type",
-            "X-Amz-Date",
-            "Authorization",
-            "X-Api-Key",
-            "X-Amz-Security-Token",
-            "X-Amzn-Trace-Id"
-          ],
-          "AllowMethods": [
-            "*"
-          ],
-          "AllowOrigins": [
-            "*"
-          ]
-        }
-      }
-    },
-    "GetPrayerRequestsLambdaPermissionFnUrl": {
-      "Type": "AWS::Lambda::Permission",
+    "UploadPrayerRequestLambdaVersionRudmF9HXEB9oy3mpK3twLi4qw5HP8oxu6ZI3HcuPHI": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Fn::GetAtt": [
-            "GetPrayerRequestsLambdaFunction",
-            "Arn"
-          ]
+          "Ref": "UploadPrayerRequestLambdaFunction"
         },
-        "Action": "lambda:InvokeFunctionUrl",
-        "Principal": "*",
-        "FunctionUrlAuthType": "NONE"
-      }
-    },
-    "GetPrayerRequestsLambdaPermissionFn": {
-      "Type": "AWS::Lambda::Permission",
-      "Properties": {
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "GetPrayerRequestsLambdaFunction",
-            "Arn"
-          ]
-        },
-        "Action": "lambda:InvokeFunction",
-        "Principal": "*",
-        "InvokedViaFunctionUrl": true
+        "CodeSha256": "JKAKnpQWMISAclvJT6DeqTNdJ+X+uZdAqpblvy5odXM="
       }
     },
     "HttpApi": {
       "Type": "AWS::ApiGatewayV2::Api",
       "Properties": {
         "Name": "dev-prayer-wall-backend",
-        "ProtocolType": "HTTP"
+        "ProtocolType": "HTTP",
+        "CorsConfiguration": {
+          "AllowHeaders": [
+            "Content-Type",
+            "X-Amz-Date",
+            "Authorization",
+            "X-Api-Key",
+            "X-Amz-Security-Token",
+            "X-Amz-User-Agent",
+            "X-Amzn-Trace-Id"
+          ],
+          "AllowMethods": [
+            "OPTIONS",
+            "POST",
+            "GET"
+          ],
+          "AllowOrigins": [
+            "*"
+          ]
+        }
       }
     },
     "HttpApiStage": {
@@ -545,46 +452,22 @@
         "Name": "sls-prayer-wall-backend-dev-ServerlessDeploymentBucketName"
       }
     },
-    "UploadPrayerRequestLambdaFunctionQualifiedArn": {
-      "Description": "Current Lambda function version",
-      "Value": {
-        "Ref": "UploadPrayerRequestLambdaVersionfr3B4m00W3t6W3SGFZuGvFIRNfACKeMf4jgICCQr0"
-      },
-      "Export": {
-        "Name": "sls-prayer-wall-backend-dev-UploadPrayerRequestLambdaFunctionQualifiedArn"
-      }
-    },
-    "UploadPrayerRequestLambdaFunctionUrl": {
-      "Description": "Lambda Function URL",
-      "Value": {
-        "Fn::GetAtt": [
-          "UploadPrayerRequestLambdaFunctionUrl",
-          "FunctionUrl"
-        ]
-      },
-      "Export": {
-        "Name": "sls-prayer-wall-backend-dev-UploadPrayerRequestLambdaFunctionUrl"
-      }
-    },
     "GetPrayerRequestsLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetPrayerRequestsLambdaVersionllkq4ppbCsilW4pSP6cthttD8XYh3YhQvwmhBg31kN8"
+        "Ref": "GetPrayerRequestsLambdaVersion7SdFzTiGg2lz1mP0m1nISqi0suP2JBxhrCvT88b1RtM"
       },
       "Export": {
         "Name": "sls-prayer-wall-backend-dev-GetPrayerRequestsLambdaFunctionQualifiedArn"
       }
     },
-    "GetPrayerRequestsLambdaFunctionUrl": {
-      "Description": "Lambda Function URL",
+    "UploadPrayerRequestLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
       "Value": {
-        "Fn::GetAtt": [
-          "GetPrayerRequestsLambdaFunctionUrl",
-          "FunctionUrl"
-        ]
+        "Ref": "UploadPrayerRequestLambdaVersionRudmF9HXEB9oy3mpK3twLi4qw5HP8oxu6ZI3HcuPHI"
       },
       "Export": {
-        "Name": "sls-prayer-wall-backend-dev-GetPrayerRequestsLambdaFunctionUrl"
+        "Name": "sls-prayer-wall-backend-dev-UploadPrayerRequestLambdaFunctionQualifiedArn"
       }
     },
     "HttpApiId": {

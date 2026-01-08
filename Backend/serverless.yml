@@ -9,6 +9,8 @@ provider:
   runtime: nodejs22.x
   region: eu-west-2
   stage: ${opt:stage, 'dev'}
+  httpApi:
+    cors: true
   environment:
     BUCKET_NAME: ${self:custom.bucketName}
   iamRoleStatements:
@@ -47,14 +49,11 @@ functions:
       - httpApi:
           path: /prayers
           method: POST
-    url:
-      cors: true
-
+    
   getPrayerRequests:
     handler: handlers/getPrayerRequests.handler
     events:
       - httpApi:
           path: /prayers
           method: GET
-    url:
-      cors: true
+    

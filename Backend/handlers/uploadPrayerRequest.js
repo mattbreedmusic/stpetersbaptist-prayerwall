@@ -42,7 +42,8 @@ exports.handler = async (event) => {
     const newRequest = {
       id: crypto.randomUUID(),
       name: body.name,
-      request: body.request,
+      message: body.message,
+      type: body.type,
       timestamp: new Date().toISOString(),
     };
 
@@ -61,8 +62,10 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  },
       body: JSON.stringify({ success: true }),
     };
   } catch (error) {
@@ -70,8 +73,10 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  },
       body: JSON.stringify({
         error: "Failed to update prayer requests",
         details: error.message,
